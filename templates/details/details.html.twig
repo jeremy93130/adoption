@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+  Hello DetailsController!
+{% endblock %}
+
+{% block body %}
+  {% include 'navbar/navbar.html.twig' %}
+  <div class="millieu-details">
+    <div class="card-flex">
+      <div class="card-details" style="width: 18rem;">
+        <div>
+          <img src="{{ asset('assets/images/' ~ animalChoisit.image) }}" class="card-img-top" alt="{{ animalChoisit.nom }}" />
+        </div>
+        <div class="card-body">
+          <div class="nom-taille">
+            <div>
+              <h5 class="card-title">{{ animalChoisit.nom }}, {{ animalChoisit.age }} ans
+
+                {% if animalChoisit.sexe == "male" %}
+                <i class="fa-solid fa-mars"></i>
+                {% else %}
+                <i class="fa-solid fa-venus"></i>
+
+                    
+                {% endif %}
+
+              </h5>
+            </div>
+            <div>
+                <p>
+                  <span class="details-span">Race :</span> {{ animalChoisit.race }}
+                </p>
+                <p>
+                <span class="details-span">Taille :</span> {{ animalChoisit.taille }} Cm
+              </p>
+              <p>
+                <span class="details-span">Poids :</span> {{ animalChoisit.Poids }} Kg
+              </p>
+            </div>
+          </div>
+          <p class="card-text">
+            <span class="details-span">Description :</span> <br /> {{ animalChoisit.description }}
+          </p>
+          <a href="" class="btn btn-primary">Adopter</a>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

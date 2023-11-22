@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+  Hello InscriptionController!
+{% endblock %}
+
+{% block body %}
+  {% if not isAppInscription %}
+    {% include 'navbar/navbar.html.twig' %}
+  {% endif %}
+  <div class="flex-inscription">
+    <div class="chatons"></div>
+    <div class="inscription-form">
+      <h1>Inscription</h1>
+      {{ form_start(form) }}
+      <div>{{ form_widget(form.nom) }}
+        {{ form_widget(form.prenom) }}</div>
+        {{ form_widget(form.email) }}
+        {{ form_widget(form.mot_de_passe) }}
+        <div>
+          {{ form_widget(form.adresse) }}
+          {{ form_widget(form.codePostal) }}
+        </div>
+          {{ form_widget(form.pays) }}
+          <div class="telephone-inscription">
+            {{ form_widget(form.telephone) }}
+            {{ form_widget(form.inscription) }}
+          </div>
+      {{ form_end(form) }}
+    </div>
+    <div class="chatons"></div>
+  </div>
+{% endblock %}

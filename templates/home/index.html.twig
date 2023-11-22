@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+  Hello HomeController!
+{% endblock %}
+
+{% block body %}
+  {% include 'navbar/navbar.html.twig' %}
+  <h1 id="titre-home">Venez découvrir nos magnifiques animaux à adopter</h1>
+  <div class="card-flex">
+    {% for animal in animaux %}
+      <div class="card" style="width: 18rem;">
+        <div>
+          <img src="{{ asset('assets/images/' ~ animal.image) }}" class="card-img-top" alt="{{ animal.nom }}" />
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">{{ animal.nom }}, {{ animal.age }} ans</h5>
+          <p class="card-text">{{ animal.race }}</p>
+          {% if animal.statut == 'disponible' %}
+            <a href="{{ path('app_details', { id: animal.id }) }}" class="btn btn-primary">Envie de l'adopter ?</a>
+          {% else %}
+            <p class="adopté">Adopté</p>
+          {% endif %}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% endblock %}

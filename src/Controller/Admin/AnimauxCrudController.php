@@ -31,17 +31,17 @@ class AnimauxCrudController extends AbstractCrudController
             ImageField::new('image')->setBasePath('assets/images/')->setUploadDir('public/assets/images/')->setRequired(false),
             ChoiceField::new('espece')
                 ->setChoices([
-                    'chien' => "Chien",
-                    "chat" => "Chat",
-                    "oiseau" => "Oiseaux",
-                    "rongeur" => "Rongeur"
+                    'chien' => "chien",
+                    "chat" => "chat",
+                    "oiseau" => "oiseau",
+                    "rongeur" => "rongeur"
                 ]),
             TextField::new('race'),
             ChoiceField::new('statut')
                 ->setChoices([
-                    "Disponible" => "Disponible",
-                    "En Attente" => "En Attente",
-                    "Adopté" => "Adopté",
+                    "Disponible" => "disponible",
+                    "En Attente" => "en attente",
+                    "Adopté" => "adopté",
                 ]),
             ChoiceField::new('sexe')
                 ->setChoices([

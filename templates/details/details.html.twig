@@ -17,12 +17,10 @@
             <div>
               <h5 class="card-title">{{ animalChoisit.nom }}, {{ animalChoisit.age }} ans
 
-                {% if animalChoisit.sexe == "male" %}
+                {% if animalChoisit.sexe == "Male" %}
                 <i class="fa-solid fa-mars"></i>
                 {% else %}
                 <i class="fa-solid fa-venus"></i>
-
-                    
                 {% endif %}
 
               </h5>
@@ -35,14 +33,20 @@
                 <span class="details-span">Taille :</span> {{ animalChoisit.taille }} Cm
               </p>
               <p>
-                <span class="details-span">Poids :</span> {{ animalChoisit.Poids }} Kg
+                <span class="details-span">Poids :</span> {{ animalChoisit.poids }} 
+                {% if animalChoisit.espece == "oiseau" or animalChoisit.espece == "rongeur" %}
+                g
+                {% else %}
+                Kg
+                {% endif %}
+                
               </p>
             </div>
           </div>
           <p class="card-text">
             <span class="details-span">Description :</span> <br /> {{ animalChoisit.description }}
           </p>
-          <a href="" class="btn btn-primary">Adopter</a>
+          <a href="{{path('app_adoption', {id: animalChoisit.id})}}" class="btn btn-primary">Adopter</a>
         </div>
       </div>
     </div>

@@ -34,7 +34,7 @@ class Animaux
     #[ORM\Column(length: 255)]
     private ?string $image = null;
 
-    #[ORM\Column(type: "string", columnDefinition: "ENUM('Male, Femelle')")]
+    #[ORM\Column(type: "string", columnDefinition: "ENUM('Male', 'Femelle')")]
     private $sexe;
 
     #[ORM\Column(type: "string", columnDefinition: "ENUM('chat', 'chien', 'oiseau')")]

@@ -148,17 +148,19 @@ body {
 .card-flex {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     margin: 20px;
 }
 
 .card {
-    margin: 0 20px;
+    margin: 20px;
     height: 450px;
     background-color: pink;
 }
 
 .card div {
     height: 300px;
+    text-align: center;
 }
 
 .card img {
@@ -170,6 +172,7 @@ body {
     background-color: black;
     color: white;
     width: 100px;
+    margin: auto;
     text-align: center;
 }
 

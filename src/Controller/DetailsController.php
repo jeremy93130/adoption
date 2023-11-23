@@ -15,7 +15,7 @@ class DetailsController extends AbstractController
         $animal = $animauxRepository->findByid($id);
         return $this->render('details/details.html.twig', [
             'controller_name' => 'DetailsController',
-            'animalChoisit' => $animal
+            'animalChoisit' => $animal,
         ]);
     }
 }

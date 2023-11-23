@@ -37,7 +37,7 @@ class Animaux
     #[ORM\Column(type: "string", columnDefinition: "ENUM('Male', 'Femelle')")]
     private $sexe;
 
-    #[ORM\Column(type: "string", columnDefinition: "ENUM('chat', 'chien', 'oiseau')")]
+    #[ORM\Column(type: "string", columnDefinition: "ENUM('chat', 'chien', 'oiseau','rongeur','reptile')")]
     private $espece;
 
     #[ORM\Column(type: "string", columnDefinition: "ENUM('disponible', 'en attente', 'adopté')")]

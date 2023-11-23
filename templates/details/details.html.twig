@@ -6,48 +6,28 @@
 
 {% block body %}
   {% include 'navbar/navbar.html.twig' %}
-  <div class="millieu-details">
-    <div class="card-flex">
-      <div class="card-details" style="width: 18rem;">
-        <div>
-          <img src="{{ asset('assets/images/' ~ animalChoisit.image) }}" class="card-img-top" alt="{{ animalChoisit.nom }}" />
-        </div>
-        <div class="card-body">
-          <div class="nom-taille">
-            <div>
-              <h5 class="card-title">{{ animalChoisit.nom }}, {{ animalChoisit.age }} ans
-
-                {% if animalChoisit.sexe == "Male" %}
-                <i class="fa-solid fa-mars"></i>
-                {% else %}
-                <i class="fa-solid fa-venus"></i>
-                {% endif %}
-
-              </h5>
-            </div>
-            <div>
-                <p>
-                  <span class="details-span">Race :</span> {{ animalChoisit.race }}
-                </p>
-                <p>
-                <span class="details-span">Taille :</span> {{ animalChoisit.taille }} Cm
-              </p>
-              <p>
-                <span class="details-span">Poids :</span> {{ animalChoisit.poids }} 
-                {% if animalChoisit.espece == "oiseau" or animalChoisit.espece == "rongeur" %}
-                g
-                {% else %}
-                Kg
-                {% endif %}
-                
-              </p>
-            </div>
-          </div>
-          <p class="card-text">
-            <span class="details-span">Description :</span> <br /> {{ animalChoisit.description }}
-          </p>
-          <a href="{{path('app_adoption', {id: animalChoisit.id})}}" class="btn btn-primary">Adopter</a>
-        </div>
+  <div class="flex-details">
+    <div class="card card-details" style="width: 18rem;">
+      <div class="img-details">
+        <img src="{{ asset('assets/images/' ~ animalChoisit.image) }}" class="card-img-top" alt="{{ animalChoisit.nom }}" />
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">
+          {{ animalChoisit.nom }}
+          {% if animalChoisit.sexe == 'Male' %}
+            <i class="fa-solid fa-mars" style="color: #070855;"></i>
+          {% else %}
+            <i class="fa-solid fa-venus" style="color: #F8C8DC;"></i>
+          {% endif %}, {{ animalChoisit.age }} ans
+        </h5>
+        <p class="card-text">
+          {{ animalChoisit.description }} <br /><br /> Taille: {{ animalChoisit.taille }} cm <br /> Poids: {{ animalChoisit.poids }}{% if animalChoisit.espece == 'rongeur' or animalChoisit.espece == 'oiseau' %}
+            g
+          {% else %}
+            Kg
+          {% endif %}
+        </p>
+        <a href="{{ path('app_adopte', { id: animalChoisit.id }) }}" class="btn btn-primary">Envie d'adopter {{ animalChoisit.nom }}?</a>
       </div>
     </div>
   </div>

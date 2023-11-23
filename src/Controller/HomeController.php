@@ -14,11 +14,9 @@ class HomeController extends AbstractController
     public function index(UserRepository $user, AnimauxRepository $animaux): Response
     {
         $adoptant = $user->findAll();
-        $animal = $animaux->findAll();
         return $this->render('home/index.html.twig', [
             'controller_name' => 'HomeController',
             "adoptant" => $adoptant,
-            "animaux" => $animal
         ]);
     }
 }

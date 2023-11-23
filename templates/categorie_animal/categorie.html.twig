@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+  Hello CategorieAnimalController!
+{% endblock %}
+
+{% block body %}
+  {% include 'navbar/navbar.html.twig' %}
+  {% set espece_titre = especes[0].espece ?? '' %}
+
+  {% if espece_titre is empty %}
+    <p class="animal_vide">Aucun {{ categorie|capitalize }} n'est disponible pour le moment</p>
+    <p class="retour_animal_vide">
+      <a href="{{ path('app_home') }}">Retour à l'accueil</a>
+    </p>
+  {% else %}
+    <div class="card-flex-categorie">
+      <h1 class="h1-details">
+        {{ espece_titre }}{% if espece_titre == 'oiseau' %}x
+        {% else %}s
+        {% endif %}à adopter
+      </h1>
+      {% for espece in especes %}
+        {% if espece.statut == 'adopté' %}
+
+        {% else %}
+          <div class="card cards-category" style="width: 18rem;">
+            <img src="{{ asset('assets/images/' ~ espece.image) }}" class="card-img-top" alt="{{ espece.nom }}" />
+            <div class="card-body">
+              <h5 class="card-title">
+                {{ espece.nom }} {% if espece.sexe == 'Male' %}
+                  <i class="fa-solid fa-mars" style="color: #070855;"></i>
+                {% else %}
+                  <i class="fa-solid fa-venus" style="color: #F8C8DC;"></i>
+                {% endif %}, {{ espece.age }} ans
+              </h5>
+              <a href="{{ path('app_details', { id: espece.id }) }}" class="btn btn-primary">En savoir plus sur {{ espece.nom }}</a>
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  {% endif %}
+{% endblock %}

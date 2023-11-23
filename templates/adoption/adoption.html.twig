@@ -1,9 +1,12 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-	Hello AdoptionController!
+  Hello AdoptionController!
 {% endblock %}
 
 {% block body %}
-	{% include "navbar/navbar.html.twig" %}
+  {% include 'navbar/navbar.html.twig' %}
+
+  <h2>Votre demande d'adoption a bien été enregistrée {{ app.user.prenom }} ! Nous reviendrons vers vous bientôt afin de fixer un rendez-vous pour rencontrer {{ demande.nom }}</h2>
+  <a href="{{ path('app_home') }}">Retour à l'accueil</a>
 {% endblock %}

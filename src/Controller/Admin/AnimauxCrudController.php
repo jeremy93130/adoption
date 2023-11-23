@@ -34,7 +34,8 @@ class AnimauxCrudController extends AbstractCrudController
                     'chien' => "chien",
                     "chat" => "chat",
                     "oiseau" => "oiseau",
-                    "rongeur" => "rongeur"
+                    "rongeur" => "rongeur",
+                    "reptile" => "reptile"
                 ]),
             TextField::new('race'),
             ChoiceField::new('statut')

@@ -56,4 +56,14 @@ class AnimauxRepository extends ServiceEntityRepository
             ->getOneOrNullResult()
         ;
     }
+
+    public function findByCategorie($categorie): array
+    {
+        return $this->createQueryBuilder('a')
+            ->andWhere('a.espece = :val')
+            ->setParameter('val', $categorie)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 }

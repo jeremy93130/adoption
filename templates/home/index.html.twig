@@ -7,22 +7,37 @@
 {% block body %}
   {% include 'navbar/navbar.html.twig' %}
   <h1 id="titre-home">Venez découvrir nos magnifiques animaux à adopter</h1>
-  <div class="card-flex">
-    {% for animal in animaux %}
-      <div class="card" style="width: 18rem;">
-        <div>
-          <img src="{{ asset('assets/images/' ~ animal.image) }}" class="card-img-top" alt="{{ animal.nom }}" />
-        </div>
-        <div class="card-body">
-          <h5 class="card-title">{{ animal.nom }}, {{ animal.age }} ans</h5>
-          <p class="card-text">{{ animal.race }}</p>
-          {% if animal.statut == 'disponible' %}
-            <a href="{{ path('app_details', { id: animal.id }) }}" class="btn btn-primary">Envie de l'adopter ?</a>
-          {% else %}
-            <p class="adopté">Adopté</p>
-          {% endif %}
-        </div>
+  <div class="flex-caroussel">
+    <button class="prev">❮</button>
+    <div class="carousel-container">
+      <div class="card-flex">
+        <a href="{{ path('app_categorie', { categorie: 'chat' }) }}">
+          <div class="chats">
+            <p>Chats</p>
+          </div>
+        </a>
+        <a href="{{ path('app_categorie', { categorie: 'chien' }) }}">
+          <div class="chiens">
+            <p>Chiens</p>
+          </div>
+        </a>
+        <a href="{{ path('app_categorie', { categorie: 'oiseau' }) }}">
+          <div class="oiseaux">
+            <p>Oiseaux</p>
+          </div>
+        </a>
+        <a href="{{ path('app_categorie', { categorie: 'rongeur' }) }}">
+          <div class="rongeurs">
+            <p>Rongeurs</p>
+          </div>
+        </a>
+        <a href="{{path('app_categorie', {categorie: 'reptile'})}}">
+          <div class="reptiles">
+            <p>Reptiles</p>
+          </div>
+        </a>
       </div>
-    {% endfor %}
+    </div>
+    <button class="next">❯</button>
   </div>
 {% endblock %}

@@ -23,6 +23,10 @@ class DemandesAdoptions
     #[ORM\Column(type: "string", columnDefinition: "ENUM('En attente', 'Acceptée', 'Refusée')")]
     private $statut;
 
+    #[ORM\ManyToOne(targetEntity: Animaux::class, inversedBy: 'demandesAdoptions')]
+    #[ORM\JoinColumn(name: 'animal_id_id', referencedColumnName: 'id', nullable: true)]
+    private ?Animaux $animal_id = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -61,6 +65,18 @@ class DemandesAdoptions
     public function setStatut(string $statut)
     {
         $this->statut = $statut;
+
+        return $this;
+    }
+
+    public function getAnimalId(): ?Animaux
+    {
+        return $this->animal_id;
+    }
+
+    public function setAnimalId(?Animaux $animal_id): static
+    {
+        $this->animal_id = $animal_id;
 
         return $this;
     }

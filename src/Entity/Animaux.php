@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use phpDocumentor\Reflection\Types\Nullable;
 
 #[ORM\Entity(repositoryClass: AnimauxRepository::class)]
 class Animaux
@@ -52,10 +53,14 @@ class Animaux
     #[ORM\ManyToMany(targetEntity: Commentaires::class, mappedBy: 'animal_id')]
     private Collection $commentaires;
 
+    #[ORM\OneToMany(mappedBy: 'animal_id', targetEntity: DemandesAdoptions::class)]
+    private Collection $demandesAdoptions;
+
     public function __construct()
     {
         $this->adoptant_id = new ArrayCollection();
         $this->commentaires = new ArrayCollection();
+        $this->demandesAdoptions = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -231,6 +236,36 @@ class Animaux
     public function setSexe($sexe)
     {
         $this->sexe = $sexe;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, DemandesAdoptions>
+     */
+    public function getDemandesAdoptions(): Collection
+    {
+        return $this->demandesAdoptions;
+    }
+
+    public function addDemandesAdoption(DemandesAdoptions $demandesAdoption): static
+    {
+        if (!$this->demandesAdoptions->contains($demandesAdoption)) {
+            $this->demandesAdoptions->add($demandesAdoption);
+            $demandesAdoption->setAnimalId($this);
+        }
+
+        return $this;
+    }
+
+    public function removeDemandesAdoption(DemandesAdoptions $demandesAdoption): static
+    {
+        if ($this->demandesAdoptions->removeElement($demandesAdoption)) {
+            // set the owning side to null (unless already changed)
+            if ($demandesAdoption->getAnimalId() === $this) {
+                $demandesAdoption->setAnimalId(null);
+            }
+        }
 
         return $this;
     }

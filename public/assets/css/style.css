@@ -346,3 +346,12 @@ body {
     color    : white;
 
 }
+
+
+/* Medias queries */
+
+@media (max-width: 1550px) {
+    .nav25:last-child h2{
+        font-size: 20px;
+    }
+}

@@ -3,20 +3,20 @@
 body {
     background: rgb(115, 131, 209);
     background: linear-gradient(0deg, rgba(115, 131, 209, 1) 0%, rgba(76, 121, 215, 1) 6%, rgba(8, 8, 85, 1) 100%);
-    height: 100vh;
+    min-height    : 100vh;
 }
 
 /* NAVBAR */
 .nav25 {
-    width: 25%;
-    height: 150px;
-    display: flex;
-    align-items: center;
+    width          : 25%;
+    height         : 150px;
+    display        : flex;
+    align-items    : center;
     justify-content: end;
 }
 
 .nav25 h2 {
-    color: white;
+    color      : white;
     text-shadow: 4px 4px 4px #0A0B58;
 }
 
@@ -29,68 +29,63 @@ body {
 }
 
 .nav25:last-child a {
-    padding: 8px 15px;
+    padding         : 8px 15px;
     background-color: rgb(8, 8, 85);
-    text-decoration: none;
-    color: white;
-    margin: 0 15px;
+    text-decoration : none;
+    color           : white;
+    margin          : 0 15px;
 }
 
 .nav {
-    display: flex;
-    justify-content: space-around;
-    background-image: url('https://media.discordapp.net/attachments/1103308573716533399/1176539643110494281/cute-sleepy-kitten-website-header.png?ex=656f3ced&is=655cc7ed&hm=042822a08194f810a9ea4b31446c95d885c0ca859e2007c689b943e44abc7728&=');
-    background-repeat: no-repeat;
-    background-size: cover;
+    display            : flex;
+    justify-content    : space-around;
+    background-image   : url('https://media.discordapp.net/attachments/1103308573716533399/1176539643110494281/cute-sleepy-kitten-website-header.png?ex=656f3ced&is=655cc7ed&hm=042822a08194f810a9ea4b31446c95d885c0ca859e2007c689b943e44abc7728&=');
+    background-repeat  : no-repeat;
+    background-size    : cover;
     background-position: center;
-    height: 350px;
+    height             : 350px;
 }
 
 .nav h1 {
-    font-size: 30px;
-    text-align: center;
+    font-size  : 30px;
+    text-align : center;
     font-family: "Lemonada", cursive;
-    color: rgb(8, 8, 85);
+    color      : rgb(8, 8, 85);
     text-shadow: 6px 3px 15px white;
 }
 
 .nav h1 a {
     text-decoration: none;
-    color: rgb(8, 8, 85);
+    color          : rgb(8, 8, 85);
 }
 
 .inscription-entete {
-    display: flex;
-    height: 150px;
-    align-items: center;
+    display        : flex;
+    height         : 150px;
+    align-items    : center;
     justify-content: center;
 }
 
 .inscription-entete img {
-    width: 100px;
+    width : 100px;
     height: 80px;
 }
 
 /* Page d'inscription */
 
-.flex-inscription {
-    background-image: url('https://www.fond-ecran-hd.net/Public/uploads/2019-01-14/480.jpg');
-    background-size: cover;
-}
-
 .inscription-form {
-    width: 800px;
-    height: 400px;
-    margin: auto;
+    width           : 800px;
+    height          : 400px;
+    margin          : auto;
     background-color: rgba(0, 0, 0, 0.582);
 }
 
 .inscription-form form {
-    display: flex;
-    flex-direction: column;
+    display        : flex;
+    flex-direction : column;
     justify-content: center;
-    align-items: center;
-    height: 100%;
+    align-items    : center;
+    height         : 100%;
 }
 
 .inscription-form form div:last-child {
@@ -98,10 +93,10 @@ body {
 }
 
 .telephone-inscription {
-    display: flex;
+    display        : flex;
     justify-content: space-between;
-    align-items: center;
-    width: 462.39px;
+    align-items    : center;
+    width          : 462.39px;
 }
 
 .inscription-form form input,
@@ -119,7 +114,7 @@ body {
 }
 
 #register_form_pays {
-    width: 420px;
+    width : 420px;
     height: 30px;
 }
 
@@ -128,7 +123,7 @@ body {
 }
 
 #register_form_inscription {
-    height: 30px;
+    height      : 30px;
     margin-right: 20px;
 }
 
@@ -136,15 +131,23 @@ body {
 
 
 .form-connexion {
-    width: 400px;
-    color: white;
+    width : 400px;
+    color : white;
     margin: auto;
 
 }
 
 .form-connexion button {
     margin-top: 10px;
-    width: 100%;
+    width     : 100%;
+}
+
+.flash-margin {
+    margin-top: 30px;
+}
+
+.no-connect a {
+    color: white;
 }
 
 
@@ -152,117 +155,117 @@ body {
 /* Page home */
 
 #titre-home {
-    text-align: center;
-    color: white;
-    margin-top: 30px;
+    text-align : center;
+    color      : white;
+    margin-top : 30px;
     font-family: 'Roboto', sans-serif;
-    font-size: 30px;
+    font-size  : 30px;
 }
 
 .card-flex {
-    display: flex;
-    /* flex-wrap: wrap; */
-    margin: 20px;
-    align-items: center;
+    display        : flex;
+    /* flex-wrap   : wrap; */
+    margin         : 20px;
+    align-items    : center;
     justify-content: space-around;
-    height: 300px;
+    height         : 300px;
 }
 
 .card-flex div {
-    margin: 20px 30px;
-    display: flex;
-    align-items: center;
+    margin         : 20px 30px;
+    display        : flex;
+    align-items    : center;
     justify-content: center;
-    font-size: 50px;
-    letter-spacing: 10px;
-    color: white;
-    text-shadow: 3px 3px 2px black;
+    font-size      : 50px;
+    letter-spacing : 10px;
+    color          : white;
+    text-shadow    : 3px 3px 2px black;
 }
 
 .chats {
-    width: 500px;
-    height: 200px;
-    background-image: url('https://www.zooplus.fr/magazine/wp-content/uploads/2019/06/comprendre-le-langage-des-chats.jpg');
+    width              : 500px;
+    height             : 200px;
+    background-image   : url('https://www.zooplus.fr/magazine/wp-content/uploads/2019/06/comprendre-le-langage-des-chats.jpg');
     background-position: center;
 }
 
 .chiens {
-    width: 500px;
-    height: 200px;
-    background-image: url('https://media.letelegramme.fr/api/v1/images/view/64ca2d6078fbf036b913fc68/web_golden_xl/64ca2d6078fbf036b913fc68.1');
+    width              : 500px;
+    height             : 200px;
+    background-image   : url('https://media.letelegramme.fr/api/v1/images/view/64ca2d6078fbf036b913fc68/web_golden_xl/64ca2d6078fbf036b913fc68.1');
     background-position: 40% 25%;
-    background-size: cover;
+    background-size    : cover;
 }
 
 .oiseaux {
-    width: 500px;
-    height: 200px;
-    background-image: url('https://media.os.fressnapf.com/cms/2020/05/Ratgeber_Voegel_6_Spatzen_1200x527.jpg');
+    width              : 500px;
+    height             : 200px;
+    background-image   : url('https://media.os.fressnapf.com/cms/2020/05/Ratgeber_Voegel_6_Spatzen_1200x527.jpg');
     background-position: center;
-    background-size: cover;
+    background-size    : cover;
 }
 
 .rongeurs {
-    width: 500px;
-    height: 200px;
-    background-image: url('https://4.bp.blogspot.com/-tIn49gZpNXg/WsuJaBSGm2I/AAAAAAAAHRY/PSvTJSftvow25O4KLoolPg1bJMz6l-aggCLcBGAs/s1600/Rongeurs-de-compagnie.jpg');
+    width              : 500px;
+    height             : 200px;
+    background-image   : url('https://4.bp.blogspot.com/-tIn49gZpNXg/WsuJaBSGm2I/AAAAAAAAHRY/PSvTJSftvow25O4KLoolPg1bJMz6l-aggCLcBGAs/s1600/Rongeurs-de-compagnie.jpg');
     background-position: center;
-    background-size: cover;
+    background-size    : cover;
 }
 
 .reptiles {
-    width: 500px;
-    height: 200px;
-    background-image: url('https://upload.wikimedia.org/wikipedia/commons/9/9a/Lacerta_bilineata_masculus_et_femella_%2B_Podarcis_muralis_%28Sarthe%29.JPG');
+    width              : 500px;
+    height             : 200px;
+    background-image   : url('https://upload.wikimedia.org/wikipedia/commons/9/9a/Lacerta_bilineata_masculus_et_femella_%2B_Podarcis_muralis_%28Sarthe%29.JPG');
     background-position: 60% 70%;
-    background-size: cover;
+    background-size    : cover;
 }
 
 /* Caroussel */
 
 .flex-caroussel {
-    display: flex;
+    display    : flex;
     align-items: center;
 }
 
 .prev,
 .next {
-    height: 30px;
-    border: none;
+    height          : 30px;
+    border          : none;
     background-color: transparent;
-    font-size: 30px;
-    color: white;
+    font-size       : 30px;
+    color           : white;
 }
 
 .carousel-container {
     overflow: hidden;
-    width: 100%;
+    width   : 100%;
 }
 
 .card-flex {
-    display: flex;
-    width: fit-content;
+    display   : flex;
+    width     : fit-content;
     transition: transform 0.5s ease;
 }
 
 .card-flex>div {
-    flex: 0 0 auto;
-    margin-right: 10px;
+    flex         : 0 0 auto;
+    margin-right : 10px;
     /* ajustez la marge entre les éléments en conséquence */
-    white-space: nowrap;
+    white-space  : nowrap;
     /* pour empêcher le renvoi à la ligne des éléments */
     /* box-shadow: 2px 3px 20px 10px black; */
 }
 
 .button {
-    position: absolute;
-    top: 50%;
-    width: 30px;
-    height: 30px;
+    position        : absolute;
+    top             : 50%;
+    width           : 30px;
+    height          : 30px;
     background-color: #333;
-    color: #fff;
-    border: none;
-    cursor: pointer;
+    color           : #fff;
+    border          : none;
+    cursor          : pointer;
 }
 
 .prev {
@@ -275,14 +278,14 @@ body {
 
 /* Page details */
 .flex-details {
-    display: flex;
+    display        : flex;
     justify-content: center;
-    margin-top: 50px;
+    margin-top     : 50px;
 }
 
 .h1-details {
     text-align: center;
-    color: white;
+    color     : white;
     margin-top: 30px;
 }
 
@@ -301,16 +304,16 @@ body {
 /* Partie categorie */
 
 .card-flex-categorie {
-    display: flex;
-    margin: 40px 15px;
+    display        : flex;
+    margin         : 40px 15px;
     justify-content: center;
-    flex-wrap: wrap;
+    flex-wrap      : wrap;
 }
 
 .card-flex-categorie h1 {
     display: block;
-    width: 100%;
-    margin: 0 0 20px 0;
+    width  : 100%;
+    margin : 0 0 20px 0;
 }
 
 .card-flex-categorie img {
@@ -318,23 +321,23 @@ body {
 }
 
 .cards-category {
-    margin: 0 20px;
+    margin          : 0 20px;
     background-color: rgb(248, 245, 245)
 }
 
 .animal_vide {
-    font-size: 60px;
+    font-size : 60px;
     text-align: center;
-    color: white;
+    color     : white;
 }
 
 .retour_animal_vide {
-    margin: 30px 0 0 0;
+    margin    : 30px 0 0 0;
     text-align: center;
 }
 
 .retour_animal_vide a {
     font-size: 45px;
-    color: white;
+    color    : white;
 
 }

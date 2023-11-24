@@ -9,6 +9,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
+use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
 
 class AdoptionController extends AbstractController
 {
@@ -22,10 +24,13 @@ class AdoptionController extends AbstractController
 
     #[Route('/adoption/{id}', name: 'app_adopte')]
 
-    public function adoption(AnimauxRepository $animauxRepository, $id, UserRepository $adoptant, Request $request, SessionInterface $sessionInterface): Response
+    public function adoption(AnimauxRepository $animauxRepository, $id): Response
     {
         $adoption = $animauxRepository->findByid($id);
-
+        if (!$this->getUser()) {
+            $this->addFlash('error', 'Merci de vous inscrire ou de vous connecter !');
+            return $this->redirectToRoute('app_login');
+        }
         return $this->render('adoption/adoption.html.twig', [
             'demande' => $adoption
         ]);

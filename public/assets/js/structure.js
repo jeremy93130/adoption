@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   nextButton.addEventListener("click", function () {
     if (scrollCount < maxScrolls - 1) {
-      scrollAmount += 900; // ajustez la valeur en conséquence
+      scrollAmount += 1300; // ajustez la valeur en conséquence
       scrollCount++;
     } else {
       scrollAmount = 0; // Réinitialiser à 0 après avoir atteint la fin

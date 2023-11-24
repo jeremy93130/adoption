@@ -11,16 +11,23 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class DetailsController extends AbstractController
 {
-    #[Route('/details/{id}', name: 'app_details')]
-    public function index(AnimauxRepository $animauxRepository, $id, DemandesAdoptionsRepository $demandesAdoptions): Response
+    #[Route('/details/{animalId}', name: 'app_details')]
+    public function index(AnimauxRepository $animauxRepository, $animalId, DemandesAdoptionsRepository $demandesAdoptions): Response
     {
-        $demande = $demandesAdoptions->findAll();
-        $count = count($demande);
-        $animal = $animauxRepository->findByid($id);
+        $animal = $animauxRepository->find($animalId);
+
+        if (!$animal) {
+            $error_animal = "Aucun animal n'est disponible";
+        }
+
+        $demandes = $demandesAdoptions->findBy(['animal_id' => $animalId]);
+
+        $count = count($demandes);
+
         return $this->render('details/details.html.twig', [
             'controller_name' => 'DetailsController',
             'animalChoisit' => $animal,
-            'demandes' => $count
+            'demandes' => $count,
         ]);
     }
 }

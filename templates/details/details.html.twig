@@ -48,9 +48,14 @@
 						<span class="demande">{{ animalChoisit.nom }}</span>
 					</p>
 				{% endif %}
-				<a href="{{ path('app_adopte', { id: animalChoisit.id }) }}" class="btn btn-primary">Faire une demande
-										D'adoption pour
-					{{animalChoisit.nom}}</a>
+				{% if demandes > 0 %}
+					<p>Vous avez déjà déposé une demande d'adoption pour
+						{{animalChoisit.nom}}</p>
+				{% else %}
+					<a href="{{ path('app_adopte', { id: animalChoisit.id }) }}" class="btn btn-primary">Faire une demande
+																D'adoption pour
+						{{animalChoisit.nom}}</a>
+				{% endif %}
 			</div>
 		</div>
 	</div>

@@ -16,7 +16,7 @@
   {% else %}
     <div class="card-flex-categorie">
       <h1 class="h1-details">
-        {{ espece_titre }}{% if espece_titre == 'oiseau' %}x
+        {{ espece_titre | capitalize }}{% if espece_titre == 'oiseau' %}x
         {% else %}s
         {% endif %}à adopter
       </h1>
@@ -34,7 +34,7 @@
                   <i class="fa-solid fa-venus" style="color: #F8C8DC;"></i>
                 {% endif %}, {{ espece.age }} ans
               </h5>
-              <a href="{{ path('app_details', { id: espece.id }) }}" class="btn btn-primary">En savoir plus sur {{ espece.nom }}</a>
+              <a href="{{ path('app_details', { animalId: espece.id }) }}" class="btn btn-primary">En savoir plus sur {{ espece.nom }}</a>
             </div>
           </div>
         {% endif %}

@@ -39,10 +39,8 @@ class AdoptionController extends AbstractController
 
             $entityManager->persist($adoptionDemande);
             $entityManager->flush();
-
         } else {
             // L'utilisateur n'est pas connecté ou n'est pas une instance de User
-            var_dump('nope');
         }
 
         if (!$this->getUser()) {

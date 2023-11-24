@@ -27,6 +27,9 @@
             Kg
           {% endif %}
         </p>
+        <p>
+          <span class="demande">{{ demandes }}</span> dossier envoyé pour adopter <span class="demande">{{ animalChoisit.nom }}</span>
+        </p>
         <a href="{{ path('app_adopte', { id: animalChoisit.id }) }}" class="btn btn-primary">Envie d'adopter {{ animalChoisit.nom }}?</a>
       </div>
     </div>

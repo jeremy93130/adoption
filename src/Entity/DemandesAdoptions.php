@@ -27,6 +27,27 @@ class DemandesAdoptions
     #[ORM\JoinColumn(name: 'animal_id_id', referencedColumnName: 'id', nullable: true)]
     private ?Animaux $animal_id = null;
 
+    #[ORM\Column(type: "string", columnDefinition: "ENUM('Celibataire', 'En couple')", nullable: false)]
+    private $situation_familiale;
+
+    #[ORM\Column(nullable: false)]
+    private int $nombre_enfants;
+
+    #[ORM\Column(type: "string", columnDefinition: "ENUM('Maison', 'Appartement')", nullable: false)]
+    private string $type_habitat;
+
+    #[ORM\Column(type: "string", columnDefinition: "ENUM('Oui','Non')" , nullable: false)]
+    private $exterieur_interieur;
+
+    #[ORM\Column(type: "string", columnDefinition: "ENUM('Terasse', 'Balcon','Jardin')")]
+    private $type_exterieur = null;
+
+    #[ORM\Column(type: "string", columnDefinition: "ENUM('Oui', 'Non')", nullable: false)]
+    private string $autre_animal;
+
+    #[ORM\Column (nullable: false)]
+    private int $etage;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -77,6 +98,90 @@ class DemandesAdoptions
     public function setAnimalId(?Animaux $animal_id): static
     {
         $this->animal_id = $animal_id;
+
+        return $this;
+    }
+
+    public function getSituationFamiliale(): string
+    {
+        return $this->situation_familiale;
+    }
+
+    public function setSituationFamiliale(string $situation_familiale): static
+    {
+        $this->situation_familiale = $situation_familiale;
+
+        return $this;
+    }
+
+    public function getNombreEnfants(): int
+    {
+        return $this->nombre_enfants;
+    }
+
+    public function setNombreEnfants(int $nombre_enfants): static
+    {
+        $this->nombre_enfants = $nombre_enfants;
+
+        return $this;
+    }
+
+    public function getTypeHabitat(): string
+    {
+        return $this->type_habitat;
+    }
+
+    public function setTypeHabitat(string $type_habitat): static
+    {
+        $this->type_habitat = $type_habitat;
+
+        return $this;
+    }
+
+    public function getExterieurInterieur(): string
+    {
+        return $this->exterieur_interieur;
+    }
+
+    public function setExterieurInterieur(string $exterieur_interieur): static
+    {
+        $this->exterieur_interieur = $exterieur_interieur;
+
+        return $this;
+    }
+
+    public function getTypeExterieur(): ?string
+    {
+        return $this->type_exterieur;
+    }
+
+    public function setTypeExterieur(string $type_exterieur): static
+    {
+        $this->type_exterieur = $type_exterieur;
+
+        return $this;
+    }
+
+    public function getAutreAnimal(): string
+    {
+        return $this->autre_animal;
+    }
+
+    public function setAutreAnimal(string $autre_animal): static
+{
+    $this->autre_animal = $autre_animal;
+
+    return $this;
+}
+
+    public function getEtage(): int
+    {
+        return $this->etage;
+    }
+
+    public function setEtage(int $etage): static
+    {
+        $this->etage = $etage;
 
         return $this;
     }

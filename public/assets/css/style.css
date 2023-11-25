@@ -3,7 +3,7 @@
 body {
     background: rgb(115, 131, 209);
     background: linear-gradient(0deg, rgba(115, 131, 209, 1) 0%, rgba(76, 121, 215, 1) 6%, rgba(8, 8, 85, 1) 100%);
-    min-height    : 100vh;
+    min-height: 100vh;
 }
 
 /* NAVBAR */
@@ -298,8 +298,46 @@ body {
 }
 
 .demande {
-    color: red;
+    color      : red;
     font-weight: bold;
+}
+
+
+/* Partie Formulaire adoption */
+
+.formulaire_adoption {
+    display       : flex;
+    flex-direction: column;
+    width         : 700px;
+    align-items   : center;
+    margin        : auto;
+    color         : white;
+}
+
+.recap {
+    display        : flex;
+    flex-wrap      : wrap;
+    justify-content: space-around;
+    margin         : 30px 0;
+}
+
+.formulaire_adoption input,
+.formulaire_adoption label {
+    width : 150px;
+    height: 24px;
+    margin: 5px;
+}
+
+#infosadoption {
+    display       : flex;
+    flex-direction: column;
+}
+
+#infosadoption label,
+#infosadoption input,
+#infosadoption select {
+    width: 200px;
+    margin: 0;
 }
 
 
@@ -351,7 +389,17 @@ body {
 /* Medias queries */
 
 @media (max-width: 1550px) {
-    .nav25:last-child h2{
-        font-size: 20px;
+    .nav25:last-child h2 {
+        font-size  : 20px;
+        align-items: center;
+    }
+
+    .inscription-entete {
+        margin-top: 20px;
+    }
+
+    .inscription-entete p {
+        font-size: 16px;
+        color    : white;
     }
 }

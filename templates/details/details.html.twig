@@ -50,7 +50,7 @@
 				{% endif %}
 				{% if demandes > 0 %}
 					<p>Vous avez déjà déposé une demande d'adoption pour
-						{{animalChoisit.nom}}</p>
+						{{animalChoisit.nom}}, nous reviendrons vers vous d'ici peu</p>
 				{% else %}
 					<a href="{{ path('app_adopte', { id: animalChoisit.id }) }}" class="btn btn-primary">Faire une demande
 																D'adoption pour

@@ -1,26 +1,33 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-  Hello HomeController!
+	Hello HomeController!
 {% endblock %}
 
 {% block body %}
-  <div class="nav">
-    <div class="inscription-entete nav25">
-      <h1><a href="{{ path('app_home') }}">La Patounerie</a></h1>
-      <img id="patoune2" src="{{ asset('assets/images/patoune3.webp') }}" alt="Patoune" />
-    </div>
-    <div class="nav25"></div>
-    {% if app.user %}
-      <div class="nav25">
-        <h2>Bonjour {{ app.user.prenom }}</h2>
-        <a href="{{ path('app_logout') }}">Se Déconnecter</a>
+	<div class="nav">
+		<div class="inscription-entete nav25">
+    <div>
+			<h1>
+				<a href="{{ path('app_home') }}">La Patounerie</a>
+			<img id="patoune2" src="{{ asset('assets/images/patoune3.webp') }}" alt="Patoune"/>
+			</h1>
+				<p>37 rue des bienheureux</p>
+				<p>79100 Sainte-Verge</p>
       </div>
-    {% else %}
-      <div class="nav25">
-        <a href="{{ path('app_inscription') }}">S'inscrire</a>
-        <a href="{{ path('app_login') }}">Se Connecter</a>
-      </div>
-    {% endif %}
-  </div>
+		</div>
+		<div class="nav25"></div>
+		{% if app.user %}
+			<div class="nav25">
+				<h2>Bonjour
+					{{ app.user.prenom }}</h2>
+				<a href="{{ path('app_logout') }}">Se Déconnecter</a>
+			</div>
+		{% else %}
+			<div class="nav25">
+				<a href="{{ path('app_inscription') }}">S'inscrire</a>
+				<a href="{{ path('app_login') }}">Se Connecter</a>
+			</div>
+		{% endif %}
+	</div>
 {% endblock %}

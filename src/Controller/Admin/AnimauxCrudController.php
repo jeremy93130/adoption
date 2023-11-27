@@ -48,6 +48,13 @@ class AnimauxCrudController extends AbstractCrudController
                 ->setChoices([
                     "Male" => "Male",
                     "Femelle" => "Femelle"
+                ]),
+            ChoiceField::new('regime_alimentaire')
+                ->setChoices([
+                    "carnivore" => "carnivore",
+                    "herbivore" => "herbivore",
+                    "omnivore" => 'omnivore',
+                    'ovipare' => 'ovipare'
                 ])
         ];
     }

@@ -4,17 +4,18 @@ namespace App\Form;
 
 use App\Entity\User;
 use Doctrine\DBAL\Types\Type;
-use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\CountryType;
-use Symfony\Component\Form\Extension\Core\Type\EmailType;
-use Symfony\Component\Form\Extension\Core\Type\NumberType;
-use Symfony\Component\Form\Extension\Core\Type\PasswordType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\Form\Extension\Core\Type\TelType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Form\Extension\Core\Type\TelType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\CountryType;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
 
 class RegisterFormType extends AbstractType
@@ -96,14 +97,17 @@ class RegisterFormType extends AbstractType
                     new Assert\Country()
                 ],
             ])
-            ->add('telephone', TelType::class, [
+            ->add('telephone', TextType::class, [
                 'label' => false,
                 'constraints' => [
                     new Assert\Length([
                         'min' => 10,
-                        'exactMessage' => 'Le numéro de téléphone doit avoir 10 chiffres'
-                    ])
-
+                        'exactMessage' => 'Le numéro de téléphone doit avoir 10 chiffres',
+                    ]),
+                    new Assert\Regex([
+                        'pattern' => '/^0[1-9]([-. ]?[0-9]{2}){4}$/',
+                        'message' => 'Le numéro de téléphone français n\'est pas valide.',
+                    ]),
                 ],
                 'attr' => [
                     'placeholder' => 'Numéro de téléphone',

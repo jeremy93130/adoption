@@ -16,36 +16,107 @@
 			<a href="{{ path('app_home') }}">Retour à l'accueil</a>
 		</p>
 	{% else %}
-		<div class="card-flex-categorie">
-			<h1 class="h1-details">
-				{{ espece_titre | capitalize }}
-				{% if espece_titre == 'oiseau' %}x{% else %}s
-				{% endif %}
-				à adopter
-			</h1>
-			{% for espece in especes %}
-				{% if espece.statut == 'adopté' %}
-
+		<div class="infos-categories">
+			<div class="card-flex-categorie">
+				<h1 class="h1-details">
+					{% if espece_titre == 'oiseau' %}
+						{{ espece_titre|capitalize }}x
 					{% else %}
-						<div class="card cards-category" style="width: 18rem;">
-							<img src="{{ asset('assets/images/' ~ espece.image) }}" class="card-img-top" alt="{{ espece.nom }}"/>
-							<div class="card-body">
-								<h5 class="card-title">
-									{{ espece.nom }}
-									{% if espece.sexe == 'Male' %}
-										<i class="fa-solid fa-mars" style="color: #070855;"></i>
-									{% else %}
-										<i class="fa-solid fa-venus" style="color: #F8C8DC;"></i>
-									{% endif %},
-									{{ espece.age }}
-									ans
-								</h5>
-								<a href="{{ path('app_details', { animalId: espece.id }) }}" class="btn btn-primary">En savoir plus sur
-									{{ espece.nom }}</a>
+						{{ espece_titre|capitalize }}s
+					{% endif %}à adopter
+				</h1>
+				{% for espece in especes %}
+					{% if espece.statut == 'adopté' %}
+
+						{% else %}
+							<div class="card cards-category" style="width: 18rem;">
+								<img src="{{ asset('assets/images/' ~ espece.image) }}" class="card-img-top" alt="{{ espece.nom }}"/>
+								<div class="card-body">
+									<h5 class="card-title">
+										{{ espece.nom }}
+										{% if espece.sexe == 'Male' %}
+											<i class="fa-solid fa-mars" style="color: #070855;"></i>
+										{% else %}
+											<i class="fa-solid fa-venus" style="color: #F8C8DC;"></i>
+										{% endif %},
+										{{ espece.age }}
+										ans
+									</h5>
+									<a href="{{ path('app_details', { animalId: espece.id }) }}" class="btn btn-primary">
+										En savoir plus sur
+										{{ espece.nom }}
+									</a>
+								</div>
 							</div>
-						</div>
+					{% endif %}
+				{% endfor %}
+			</div>
+			<div class="info-espece">
+				{% if categorie %}
+					<h2>
+						Tout savoir sur les
+						{% if categorie == 'oiseau' %}
+							{{ categorie }}x
+						{% else %}
+							{{ categorie }}s
+						{% endif %}
+					</h2>
 				{% endif %}
-			{% endfor %}
+				<div class="paragraphe-espece">
+					{% if categorie == 'chat' %}
+						<p>Nom Latin : Felis Catus</p>
+						<p>Régime Alimentaire : Carnivore</p>
+						<p>Taille Moyenne : De 23 à 25cm</p>
+						<p>Poids : 4 à 4,5kg pour les chats dits "normaux"</p>
+
+						<div class="lesaviezvous">
+							<p class="saviez">Le Saviez-vous ?</p>
+							<p>{{ saviezVousChats }}</p>
+						</div>
+					{% elseif categorie == 'chien' %}
+						<p>Nom Latin : Canis Lupus Familiaris</p>
+						<p>Régime Alimentaire : Carnivore</p>
+						<p>Taille Moyenne : 15 à 60cm</p>
+						<p>Poids : De 5 à 30kg</p>
+
+						<div class="lesaviezvous">
+							<p class="saviez">Le Saviez-vous ?</p>
+							<p>{{ saviezVousChiens }}</p>
+						</div>
+					{% elseif categorie == 'oiseau' %}
+						<p>Nom Latin : Avis</p>
+						<p>Régime Alimentaire : Omnivore</p>
+						<p>Taille Moyenne : de 12cm à 58cm</p>
+						<p>Poids : De 20g à + de 1kg</p>
+
+						<div class="lesaviezvous">
+							<p class="saviez">Le Saviez-vous ?</p>
+							<p>{{ saviezVousOiseaux }}</p>
+						</div>
+					{% elseif categorie == 'rongeur' %}
+						<p>Nom Latin : Rodentia</p>
+						<p>Régime Alimentaire : Herbivores</p>
+						<p>Taille Moyenne : de 4,4cm à + de 1m</p>
+						<p>Poids : De 4g à 55kg</p>
+
+						<div class="lesaviezvous">
+							<p class="saviez">Le Saviez-vous ?</p>
+							<p>{{ saviezVousRongeurs }}</p>
+						</div>
+					{% elseif categorie == 'reptile' %}
+						<p>Nom Latin : Reptilia</p>
+						<p>Régime Alimentaire : Carnivore</p>
+						<p>Taille Moyenne : de 13,5mm à + de 10m</p>
+						<p>Poids : De 0,2g à 1T</p>
+
+						<div class="lesaviezvous">
+							<p class="saviez">Le Saviez-vous ?</p>
+							<p>{{ saviezVousReptiles }}</p>
+						</div>
+					{% endif %}
+				</div>
+			</div>
+			<div style="width: 250px"></div>
 		</div>
 	{% endif %}
 {% endblock %}

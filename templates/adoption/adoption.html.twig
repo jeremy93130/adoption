@@ -1,34 +1,40 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-	Hello AdoptionController!
+  Hello AdoptionController!
 {% endblock %}
 
 {% block body %}
-	{% include 'navbar/navbar.html.twig' %}
-	<div class="formulaire_adoption">
-		<h1>Formulaire d'adoption</h1>
-		<h2>Récapitulatif de vos informations :
-		</h2>
+  {% include 'navbar/navbar.html.twig' %}
+  <div>
+    <h1 class="titre-formu-adoption">Formulaire d'adoption</h1>
+  </div>
+  <div class="formulaire_adoption">
+	  <div class="">
+		<h2>Récapitulatif de vos informations :</h2>
 		<div class="recap">
-			<label>Nom</label>
-			<input type="text" value="{{app.user.nom}}" disabled/>
-			<label>Prenom</label>
-			<input type="text" value="{{app.user.prenom}}" disabled/>
-			<label>Adresse</label>
-			<input type="text" value="{{app.user.adresse}}" disabled/>
-			<label>Code Postal</label>
-			<input type="text" value="{{app.user.codePostal}}" disabled/>
-			<label>Pays</label>
-			<input type="text" value="{{app.user.pays}}" disabled/>
-			<label>Téléphone</label>
-			<input type="text" value="{{app.user.telephone}}" disabled/>
-		</div>
-		{% if app.flashes('error_champs') %}
-			<p>Merci de Remplir tous les champs !</p>
-		{% endif %}
-		{{ form_start(form)}}
-		{{form(form)}}
-			{{ form_end(form) }}
-		</div>
-	{% endblock %}
+		<label>Nom</label>
+		<input type="text" value="{{ app.user.nom }}" disabled />
+		<label>Prenom</label>
+		<input type="text" value="{{ app.user.prenom }}" disabled />
+		<label>Adresse</label>
+		<input type="text" value="{{ app.user.adresse }}" disabled />
+		<label>Code Postal</label>
+		<input type="text" value="{{ app.user.codePostal }}" disabled />
+		<label>Pays</label>
+		<input type="text" value="{{ app.user.pays }}" disabled />
+		<label>Téléphone</label>
+		<input type="text" value="{{ app.user.telephone }}" disabled />
+	  </div>
+	</div>
+    <div class="infosSupp">
+      {% if app.flashes('error_champs') %}
+        <p>Merci de Remplir tous les champs !</p>
+      {% endif %}
+      <h2>Informations complémentaires :</h2>
+      {{ form_start(form) }}
+      {{ form(form) }}
+      {{ form_end(form) }}
+    </div>
+  </div>
+{% endblock %}

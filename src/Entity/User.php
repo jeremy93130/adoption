@@ -39,9 +39,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\ManyToMany(targetEntity: Animaux::class, mappedBy: 'adoptant_id')]
     private Collection $animaux;
 
-    #[ORM\OneToMany(mappedBy: 'adoptant_id', targetEntity: Commentaires::class)]
-    private Collection $commentaires;
-
     #[ORM\OneToMany(mappedBy: 'adoptant_id', targetEntity: DemandesAdoptions::class)]
     private Collection $demandesAdoptions;
 
@@ -51,12 +48,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 255)]
     private ?string $pays = null;
 
-    private $roles = [];
+    #[ORM\Column]
+    private array $roles = ["ROLE_USER"];
 
     public function __construct()
     {
         $this->animaux = new ArrayCollection();
-        $this->commentaires = new ArrayCollection();
         $this->demandesAdoptions = new ArrayCollection();
     }
 
@@ -163,37 +160,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
-
-    /**
-     * @return Collection<int, Commentaires>
-     */
-    public function getCommentaires(): Collection
-    {
-        return $this->commentaires;
-    }
-
-    public function addCommentaire(Commentaires $commentaire): static
-    {
-        if (!$this->commentaires->contains($commentaire)) {
-            $this->commentaires->add($commentaire);
-            $commentaire->setAdoptantId($this);
-        }
-
-        return $this;
-    }
-
-    public function removeCommentaire(Commentaires $commentaire): static
-    {
-        if ($this->commentaires->removeElement($commentaire)) {
-            // set the owning side to null (unless already changed)
-            if ($commentaire->getAdoptantId() === $this) {
-                $commentaire->setAdoptantId(null);
-            }
-        }
-
-        return $this;
-    }
-
     /**
      * @return Collection<int, DemandesAdoptions>
      */
@@ -250,10 +216,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function getRoles(): array
     {
-        return ['ROLE_USER'];
+        return $this->roles;
     }
 
-    public function setRoles($roles): static
+    public function setRoles(array $roles): static
     {
         $this->roles = $roles;
         return $this;

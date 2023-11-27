@@ -50,16 +50,15 @@ class Animaux
     #[ORM\ManyToMany(targetEntity: User::class, inversedBy: 'animaux')]
     private Collection $adoptant_id;
 
-    #[ORM\ManyToMany(targetEntity: Commentaires::class, mappedBy: 'animal_id')]
-    private Collection $commentaires;
-
     #[ORM\OneToMany(mappedBy: 'animal_id', targetEntity: DemandesAdoptions::class)]
     private Collection $demandesAdoptions;
+
+    #[ORM\Column(type: "string", columnDefinition: "ENUM('carnivore', 'herbivore', 'omnivore', 'ovipare')")]
+    private $regime_alimentaire;
 
     public function __construct()
     {
         $this->adoptant_id = new ArrayCollection();
-        $this->commentaires = new ArrayCollection();
         $this->demandesAdoptions = new ArrayCollection();
     }
 
@@ -201,33 +200,6 @@ class Animaux
         return $this;
     }
 
-    /**
-     * @return Collection<int, Commentaires>
-     */
-    public function getCommentaires(): Collection
-    {
-        return $this->commentaires;
-    }
-
-    public function addCommentaire(Commentaires $commentaire): static
-    {
-        if (!$this->commentaires->contains($commentaire)) {
-            $this->commentaires->add($commentaire);
-            $commentaire->addAnimalId($this);
-        }
-
-        return $this;
-    }
-
-    public function removeCommentaire(Commentaires $commentaire): static
-    {
-        if ($this->commentaires->removeElement($commentaire)) {
-            $commentaire->removeAnimalId($this);
-        }
-
-        return $this;
-    }
-
     public function getSexe()
     {
         return $this->sexe;
@@ -266,6 +238,18 @@ class Animaux
                 $demandesAdoption->setAnimalId(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getRegimeAlimentaire()
+    {
+        return $this->regime_alimentaire;
+    }
+
+    public function setRegimeAlimentaire($regime_alimentaire)
+    {
+        $this->regime_alimentaire = $regime_alimentaire;
 
         return $this;
     }

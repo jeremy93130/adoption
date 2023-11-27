@@ -31,10 +31,8 @@
 					<br/>
 					Poids:
 					{{ animalChoisit.poids }}
-					{% if animalChoisit.espece == 'rongeur' or animalChoisit.espece == 'oiseau' %}
-						g
-					{% else %}
-						Kg
+					{% if animalChoisit.espece == 'rongeur' or animalChoisit.espece == 'oiseau' %}g
+					{% else %}Kg
 					{% endif %}
 				</p>
 				{% if demandes == 0 %}

@@ -19,9 +19,9 @@
 		<div class="card-flex-categorie">
 			<h1 class="h1-details">
 				{{ espece_titre | capitalize }}
-				{% if espece_titre == 'oiseau' %}x
-					{% else %}s
-				{% endif %}à adopter
+				{% if espece_titre == 'oiseau' %}x{% else %}s
+				{% endif %}
+				à adopter
 			</h1>
 			{% for espece in especes %}
 				{% if espece.statut == 'adopté' %}

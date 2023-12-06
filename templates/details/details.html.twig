@@ -1,60 +1,66 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-	Hello DetailsController!
+  Hello DetailsController!
 {% endblock %}
 
 {% block body %}
-	{% include 'navbar/navbar.html.twig' %}
-	<div class="flex-details">
-		<div class="card card-details" style="width: 18rem;">
-			<div class="img-details">
-				<img src="{{ asset('assets/images/' ~ animalChoisit.image) }}" class="card-img-top" alt="{{ animalChoisit.nom }}"/>
-			</div>
-			<div class="card-body">
-				<h5 class="card-title">
-					{{ animalChoisit.nom }}
-					{% if animalChoisit.sexe == 'Male' %}
-						<i class="fa-solid fa-mars" style="color: #070855;"></i>
-					{% else %}
-						<i class="fa-solid fa-venus" style="color: #F8C8DC;"></i>
-					{% endif %},
-					{{ animalChoisit.age }}
-					ans
-				</h5>
-				<p class="card-text">
-					{{ animalChoisit.description }}
-					<br/><br/>
-					Taille:
-					{{ animalChoisit.taille }}
-					cm
-					<br/>
-					Poids:
-					{{ animalChoisit.poids }}
-					{% if animalChoisit.espece == 'rongeur' or animalChoisit.espece == 'oiseau' %}g
-					{% else %}Kg
-					{% endif %}
-				</p>
-				{% if demandes == 0 %}
-					<p>
-						Soyez le premier à déposer votre demande pour adopter
-						{{animalChoisit.nom}}</p>
-				{% else %}
-					<p>
-						<span class="demande">{{ demandes }}</span>
-						dossier envoyé pour adopter
-						<span class="demande">{{ animalChoisit.nom }}</span>
-					</p>
-				{% endif %}
-				{% if demandes > 0 %}
-					<p>Vous avez déjà déposé une demande d'adoption pour
-						{{animalChoisit.nom}}, nous reviendrons vers vous d'ici peu</p>
-				{% else %}
-					<a href="{{ path('app_adopte', { id: animalChoisit.id }) }}" class="btn btn-primary">Faire une demande
-																D'adoption pour
-						{{animalChoisit.nom}}</a>
-				{% endif %}
-			</div>
-		</div>
-	</div>
+  {% include 'navbar/navbar.html.twig' %}
+  <div class="flex-details">
+    <div class="card card-details" style="width: 18rem;">
+      <div class="img-details">
+        <img src="{{ asset('assets/images/' ~ animalChoisit.image) }}" class="card-img-top" alt="{{ animalChoisit.nom }}" />
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">
+          {{ animalChoisit.nom }}
+          {% if animalChoisit.sexe == 'Male' %}
+            <i class="fa-solid fa-mars" style="color: #070855;"></i>
+          {% else %}
+            <i class="fa-solid fa-venus" style="color: #F8C8DC;"></i>
+          {% endif %},
+          {{ animalChoisit.age }}
+          ans
+        </h5>
+        <p class="card-text">
+          {{ animalChoisit.description }}
+          <br /><br />
+          Taille:
+          {{ animalChoisit.taille }}
+          cm
+          <br />
+          Poids:
+          {{ animalChoisit.poids }}
+          {% if animalChoisit.espece == 'rongeur' or animalChoisit.espece == 'oiseau' %}
+            g
+          {% else %}
+            Kg
+          {% endif %}
+        </p>
+        {% if demandes == 0 %}
+          <p>Soyez le premier à déposer votre demande pour adopter
+            {{ animalChoisit.nom }}</p>
+        {% else %}
+          <p>
+            <span class="demande">{{ demandes }}</span>
+            dossier envoyé pour adopter
+            <span class="demande">{{ animalChoisit.nom }}</span>
+          </p>
+        {% endif %}
+        {% if demandes > 0 %}
+          <p>Vous avez déjà déposé une demande d'adoption pour
+            {{ animalChoisit.nom }}, nous reviendrons vers vous d'ici peu</p>
+        {% else %}
+          {% if app.user %}
+            <a href="{{ path('app_adopte', { id: animalChoisit.id }) }}" class="btn btn-primary">
+              Faire une demande D'adoption pour
+              {{ animalChoisit.nom }}
+            </a>
+          {% else %}
+            <a href="{{ path('app_login') }}" class="btn btn-primary">Faire une demande d'adoption pour {{ animalChoisit.nom }}</a>
+          {% endif %}
+        {% endif %}
+      </div>
+    </div>
+  </div>
 {% endblock %}
